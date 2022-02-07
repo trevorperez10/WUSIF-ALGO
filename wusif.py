@@ -21,11 +21,20 @@ liab = data['balanceSheetHistoryQuarterly']['balanceSheetStatements'][0]['totalL
 equity = data['balanceSheetHistoryQuarterly']['balanceSheetStatements'][0]['totalStockholderEquity']['raw']
 marketCap = data['price']['marketCap']['raw']
 revenue = data['incomeStatementHistory']['incomeStatementHistory'][0]['totalRevenue']['raw']
+marketPricePerShare=data['price']['regularMarketPrice']['raw']
+sharesoutstanding = marketCap/marketPricePerShare
+totalassets = data['balanceSheetHistoryQuarterly']['balanceSheetStatements'][0]['totalAssets']['raw']
+bookvalue=totalassets-liab
+bvpershare=bookvalue/sharesoutstanding
+print(bvpershare)
+print (totalassets)
 print (revenue)
 print (marketCap)
 print (liab)
 print (equity)
+print(marketPricePerShare)
 print ("debt to equity ratio: " + str(liab / equity)) #low debt to equity ratio = good, mulitply by -1 for score 
+print("price to BV ratio: " +str(marketPricePerShare/bvpershare))
 print ("price to sales ratio: " + str(marketCap / revenue))#low price to sales ratio = good, multiple by -1 for score 
 #645324000
 #print(response.text)
