@@ -26,6 +26,8 @@ sharesoutstanding = marketCap/marketPricePerShare
 totalassets = data['balanceSheetHistoryQuarterly']['balanceSheetStatements'][0]['totalAssets']['raw']
 bookvalue=totalassets-liab
 bvpershare=bookvalue/sharesoutstanding
+netIncome= data[ 'incomeStatementHistoryQuarterly']['incomeStatementHistory'][0]['netIncome']['raw']
+print(netIncome)
 print(bvpershare)
 print (totalassets)
 print (revenue)
@@ -36,5 +38,6 @@ print(marketPricePerShare)
 print ("debt to equity ratio: " + str(liab / equity)) #low debt to equity ratio = good, mulitply by -1 for score 
 print("price to BV ratio: " +str(marketPricePerShare/bvpershare))
 print ("price to sales ratio: " + str(marketCap / revenue))#low price to sales ratio = good, multiple by -1 for score 
+print("return on equity: " + str(netIncome/equity))
 #645324000
 #print(response.text)
